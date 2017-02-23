@@ -1,27 +1,37 @@
 #!/usr/bin/env python
+
 import sys
+import random
 
-def getInput():
-    userInput = input('Please enter your choice:\nRock, Paper or Scissors? (Type "Quit" to exit)\n')
-    print(userInput)
-    validateInput(userInput)
-    print(userInput)
+while True:
+    randChoice = random.randint(0,2)
+    userChoice = input('Enter 1 for rock, 2 for paper and 3 for scissors. Enter "q" to quit\n')
+    print(userChoice)
+    print(randChoice)
+    if userChoice in ['1','2','3','q']:
+        if userChoice == 'q':
+            sys.exit('Goodbye!')
+        if userChoice == '1':
+            if randChoice == 0:
+                print('Tie')
+            if randChoice == 1:
+                print('Lose')
+            if randChoice == 2:
+                print('Win')
+        if userChoice == '2':
+            if randChoice == 0:
+                print('Win!')
+            if randChoice == 1:
+                print('Tie')
+            if randChoice == 2:
+                print('Lose')
+        if userChoice == '3':
+            if randChoice == 0:
+                print('Lose')
+            if randChoice == 1:
+                print('Win!')
+            if randChoice == 2:
+                print('Tie')
 
-def validateInput(userInput):
-    print ('validating input...')
-    if userInput:
-        if userInput.lower() not in ['rock', 'paper', 'scissors']:
-                print('Nope!')
-        elif userInput is '':
-            print('Invalid input')
-        elif userInput.lower() in 'quit':
-            sys.exit(2)
-        elif userInput.lower() in ['rock','r']:
-            print ('you chose rock')
     else:
-        print('stop messing up')
-def main():
-    while True:
-        getInput()
-
-main()
+        print('invalid input')
