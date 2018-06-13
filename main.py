@@ -7,7 +7,7 @@ options = ['1', '2', '3', 'q']
 wins = 0
 
 def process_player_turn():
-    choice = input("Enter 1 for Rock, 2 for Paper and 3 For Scissors. To quit, enter 'q'\n")
+    choice = input("Enter 1 for Rock, 2 for Paper and 3 For Scissors. To quit, enter 'q'\n>> ")
     if choice.lower() in options:
         if choice == '1':
             print("You chose ROCK")
@@ -41,7 +41,6 @@ def process_cpu_turn():
 
 def roshambo():
     global wins
-    wins = 0
     userChoice = process_player_turn()
 
     if str(userChoice).lower() == 'q':
@@ -57,12 +56,8 @@ def roshambo():
             wins = wins + 1
         else:
             print("You lose!")
-            
+
         return wins
-
-
-
-
 
 
 def main():
