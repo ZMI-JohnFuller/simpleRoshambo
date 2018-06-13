@@ -6,48 +6,45 @@ import random
 options = ['1', '2', '3', 'q']
 wins = 0
 
-def process_player_turn():
-    choice = input("Enter 1 for Rock, 2 for Paper and 3 For Scissors. To quit, enter 'q'\n>> ")
+
+def process_turn(player):
+    if player == "cpu":
+        choice = str(random.randint(1,3))
+    else:
+        choice = input("Enter 1 for Rock, 2 for Paper and 3 For Scissors. To quit, enter 'q'\n>> ")
+
     if choice.lower() in options:
         if choice == '1':
-            print("You chose ROCK")
-            return 'rock'
-        elif choice == '2':
-            print("You chose PAPER")
-            return 'paper'
-        elif choice == '3':
-            print("You chose SCISSORS")
+            if player == 'cpu':
+                print("The Computer chooses ROCK")
+            else:
+                print("You chose ROCK")
+            return "rock"
+        if choice == '2':
+            if player == 'cpu':
+                print("The Computer chooses PAPER")
+            else:
+                print("You chose PAPER")
+            return "paper"
+        if choice == '3':
+            if player == 'cpu':
+                print("The Computer chooses SCISSORS")
+            else:
+                print("You chose SCISSORS")
             return "scissors"
-        elif choice == 'q':
-            sys.exit("Game Over!")
-    else:
-        return "Invalid choice"
-
-
-def process_cpu_turn():
-    choice = str(random.randint(1,3))
-    if choice == '1':
-        print("The Computer chooses ROCK")
-        return 'rock'
-    elif choice == '2':
-        print("The Computer chooses PAPER")
-        return 'paper'
-    elif choice == '3':
-        print("The Computer chooses SCISSORS")
-        return "scissors"
-    else:
-        return "Invalid choice"
+        if choice == 'q':
+            sys.exit("Game Over!\nYou won {} games!".format(wins))
 
 
 def roshambo():
     global wins
-    userChoice = process_player_turn()
+    userChoice = process_turn("player")
 
     if str(userChoice).lower() == 'q':
         sys.exit("Game Over!\nYou have won {} games!".format(wins))
     else:
 
-        computerChoice = process_cpu_turn()
+        computerChoice = process_turn("cpu")
 
         if userChoice == computerChoice:
             print("Tie!")
